@@ -1,1 +1,27 @@
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+{
+    List<uint> pierwsze = new List<uint>();
+    for (uint i = 100000000; i < uint.MaxValue; i++)
+    {
+        bool pierwsza = true;
+        for (uint n = 2; n < i; n++)
+        {
+            if (i % n == 0)
+            {
+                pierwsza = false;
+                break;
+            }
+        }
+        if (pierwsza)
+        {
+            pierwsze.Add(i);
+        }
+    }
+    foreach (uint p in pierwsze)
+    {
+        Console.WriteLine(p.ToString());
+    }
