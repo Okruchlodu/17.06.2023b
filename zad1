@@ -1,27 +1,47 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+class Program
 {
-    List<uint> pierwsze = new List<uint>();
-    for (uint i = 100000000; i < uint.MaxValue; i++)
+    static void Main(string[] args)
     {
-        bool pierwsza = true;
-        for (uint n = 2; n < i; n++)
+        // Pobranie od użytkownika liczby n
+        Console.Write("Podaj liczbę n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Wypisanie n liczb pierwszych
+        PrintPrimeNumbers(n);
+
+        Console.ReadLine();
+    }
+
+    static bool IsPrime(int number)
+    {
+        if (number < 2)
+            return false;
+
+        for (int i = 2; i <= Math.Sqrt(number); i++)
         {
-            if (i % n == 0)
+            if (number % i == 0)
+                return false;
+        }
+
+        return true;
+    }
+
+    static void PrintPrimeNumbers(int n)
+    {
+        int count = 0;
+        int number = 2;
+
+        while (count < n)
+        {
+            if (IsPrime(number))
             {
-                pierwsza = false;
-                break;
+                Console.WriteLine(number);
+                count++;
             }
-        }
-        if (pierwsza)
-        {
-            pierwsze.Add(i);
+
+            number++;
         }
     }
-    foreach (uint p in pierwsze)
-    {
-        Console.WriteLine(p.ToString());
-    }
+}
