@@ -1,47 +1,24 @@
 using System;
 
-class Program
+public class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
-        // Pobranie od użytkownika liczby n
-        Console.Write("Podaj liczbę n: ");
-        int n = int.Parse(Console.ReadLine());
-
-        // Wypisanie n liczb pierwszych
-        PrintPrimeNumbers(n);
-
-        Console.ReadLine();
+        int czas = 332;
+        string sformatowanyCzas = FormatujCzas(czas);
+        Console.WriteLine(sformatowanyCzas);
     }
 
-    static bool IsPrime(int number)
+    public static string FormatujCzas(int czas)
     {
-        if (number < 2)
-            return false;
+        int godziny = czas / 3600;
+        int minuty = (czas % 3600) / 60;
+        int sekundy = czas % 60;
 
-        for (int i = 2; i <= Math.Sqrt(number); i++)
-        {
-            if (number % i == 0)
-                return false;
-        }
+        string sGodziny = godziny.ToString("00");
+        string sMinuty = minuty.ToString("00");
+        string sSekundy = sekundy.ToString("00");
 
-        return true;
-    }
-
-    static void PrintPrimeNumbers(int n)
-    {
-        int count = 0;
-        int number = 2;
-
-        while (count < n)
-        {
-            if (IsPrime(number))
-            {
-                Console.WriteLine(number);
-                count++;
-            }
-
-            number++;
-        }
+        return $"{sGodziny}:{sMinuty}:{sSekundy}";
     }
 }
