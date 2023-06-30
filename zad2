@@ -1,32 +1,25 @@
-
-
 using System;
 
-class Program
-
+public class Program
+{
+    public static void Main(string[] args)
     {
-        Random random = new Random();
-        int iloscLiczbParzystych = 10; 
-        int licznikLosowan = 0; 
+        double x1 = 1.5;
+        double y1 = 2.0;
+        double x2 = 4.0;
+        double y2 = 6.5;
 
-        Console.Write("Wersja 1: ");
-        for (int i = 0; i < iloscLiczbParzystych; i++)
-        {
-            int wylosowanaLiczba;
-            do
-            {
-                wylosowanaLiczba = random.Next(-8, 9);
-                licznikLosowan++;
-            } while (wylosowanaLiczba % 2 != 0);
-
-            Console.Write(wylosowanaLiczba);
-
-            if (i < iloscLiczbParzystych - 1)
-            {
-                Console.Write(", ");
-            }
-        }
-
-        Console.WriteLine();
-        Console.WriteLine("Liczba wykonanych losowań: " + licznikLosowan);
+        double dlugoscOdcinka = ObliczDlugoscOdcinka(x1, y1, x2, y2);
+        Console.WriteLine($"Długość odcinka: {dlugoscOdcinka}");
     }
+
+    public static double ObliczDlugoscOdcinka(double x1, double y1, double x2, double y2)
+    {
+        double roznicaX = x2 - x1;
+        double roznicaY = y2 - y1;
+
+        double dlugosc = Math.Sqrt(Math.Pow(roznicaX, 2) + Math.Pow(roznicaY, 2));
+
+        return dlugosc;
+    }
+}
